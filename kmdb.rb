@@ -296,17 +296,15 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-warner = Studio.find_by({ "name" => "Warner Bros."})
 
 warner_movies = Movie.where({ "studio_id" => warner["id"] })
-
 
 for movie in warner_movies
 
 movie_title = movie ["title"]
 year_released = movie ["year_released"]
 rated = movie ["rated"]
-studio = movie ["studio_id"]
+studio = Studio.find_by({"id"=> movie["studio_id"]})["name"]
 printf("%-25s %-10s %-10s %-10s\n", "#{movie_title}", "#{year_released}", "#{rated}", "#{studio}")
 
 end 
@@ -322,27 +320,11 @@ puts ""
 # TODO!
 
 
-role_begins = Role.where({ "movie_id" => begins["id"] })
-for role in role_begins
-    movie_title1 = role ["movie_id"]
-    movie_actor = role ["actor_id"]
+roles = Role.all
+for role in roles
+    movie_title = Movie.find_by({"id" => role["movie_id"]})["title"]
+    movie_actor = Actor.find_by({"id" => role["actor_id"]})["name"]
     movie_character = role ["character_name"]
-    puts "#{movie_title1} #{movie_actor} #{movie_character}"
+    printf("%-25s %-25s %-25s\n", "#{movie_title}", "#{movie_actor}", "#{movie_character}")
 end 
 
-role_dark = Role.where({ "movie_id" => dark_night["id"] })
-for role in role_dark
-    movie_title1 = role ["movie_id"]
-    movie_actor = role ["actor_id"]
-    movie_character = role ["character_name"]
-    puts "#{movie_title1} #{movie_actor} #{movie_character}"
-end 
-
-
-role_rises = Role.where({ "movie_id" => dark_rises["id"] })
-for role in role_rises
-    movie_title1 = role ["movie_id"]
-    movie_actor = role ["actor_id"]
-    movie_character = role ["character_name"]
-    puts "#{movie_title1} #{movie_actor} #{movie_character}"
-end
