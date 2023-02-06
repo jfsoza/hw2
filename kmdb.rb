@@ -289,8 +289,16 @@ puts "Movies"
 puts "======"
 puts ""
 
-all_movies = Movie.all
-puts all_movies.inspect
+
+movie_list = Movie.where({ "studio_id" => warner["id"] })
+
+for movie in movie_list
+movie_title = movie ["title"]
+year_released = movie ["year_released"]
+rated = movie ["rated"]
+studio = movie ["studio_id"]
+puts "#{movie_title} #{year_released} #{rated} #{studio}"
+end 
 
 
 
@@ -303,7 +311,54 @@ puts "Top Cast"
 puts "========"
 puts ""
 
-all_roles = Role.all
-puts all_roles.inspect
+role_begins = Role.where({ "movie_id" => begins["id"] })
+for role in role_begins
+    movie_title1 = role ["movie_id"]
+    movie_actor = role ["actor_id"]
+    movie_character = role ["character_name"]
+    puts "#{movie_title1} #{movie_actor} #{movie_character}"
+end 
+
+role_dark = Role.where({ "movie_id" => dark_night["id"] })
+for role in role_dark
+    movie_title1 = role ["movie_id"]
+    movie_actor = role ["actor_id"]
+    movie_character = role ["character_name"]
+    puts "#{movie_title1} #{movie_actor} #{movie_character}"
+end 
+
+role_rises = Role.where({ "movie_id" => dark_rises["id"] })
+for role in role_rises
+    movie_title1 = role ["movie_id"]
+    movie_actor = role ["actor_id"]
+    movie_character = role ["character_name"]
+    puts "#{movie_title1} #{movie_actor} #{movie_character}"
+end
+
+#all_roles = Role.all
+#puts all_roles.inspect
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+
+
+
+
+###
+#apple_contacts = Contact.where({ "company_id" => apple["id"] })
+#puts apple_contacts.inspect
+
+#puts "Contacts at Apple: #{apple_contacts.count}"
+
+# 3. What is the full name of each contact who works at Apple?
+
+# loop through contacts
+#for contact in apple_contacts
+  # read each contact row's first_name and last_name columns
+ # first_name = contact["first_name"]
+  #last_name = contact["last_name"]
+  # display the first_name and last_name
+  #puts "#{first_name} #{last_name}"
+#end
+
+
