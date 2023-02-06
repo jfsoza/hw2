@@ -169,14 +169,120 @@ movie.save
 
 #roles
 
+#batmanbegins
 begins = Movie.find_by({ "title" => "Batman Begins" })
 bale = Actor.find_by({ "name" => "Christian Bale" })
+caine = Actor.find_by({ "name" => "Michael Caine" })
+neeson = Actor.find_by({ "name" => "Liam Neeson" })
+holmes = Actor.find_by({ "name" => "Katie Holmes" })
+oldman = Actor.find_by({ "name" => "Gary Oldman" })
+
 
 role = Role.new
 role ["movie_id"] = begins["id"]
 role ["actor_id"] = bale["id"]
 role ["character_name"] = "Bruce Wayne"
 role.save
+
+role = Role.new
+role ["movie_id"] = begins["id"]
+role ["actor_id"] = caine["id"]
+role ["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role ["movie_id"] = begins["id"]
+role ["actor_id"] = neeson["id"]
+role ["character_name"] = "Ra's Al Ghul"
+role.save
+
+role = Role.new
+role ["movie_id"] = begins["id"]
+role ["actor_id"] = holmes["id"]
+role ["character_name"] = "Rachel Dawes"
+role.save
+
+role = Role.new
+role ["movie_id"] = begins["id"]
+role ["actor_id"] = oldman["id"]
+role ["character_name"] = "Commissioner Gordon"
+role.save
+
+#darknight
+dark_night = Movie.find_by({ "title" => "The Dark Knight" })
+ledger = Actor.find_by({ "name" => "Heath Ledger" })
+aaron = Actor.find_by({ "name" => "Aaron Eckhart" })
+maggie = Actor.find_by({ "name" => "Maggie Gyllenhaal" })
+
+role = Role.new
+role ["movie_id"] = dark_night["id"]
+role ["actor_id"] = bale["id"]
+role ["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_night["id"]
+role ["actor_id"] = ledger["id"]
+role ["character_name"] = "Joker"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_night["id"]
+role ["actor_id"] = aaron["id"]
+role ["character_name"] = "Harvey Dent"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_night["id"]
+role ["actor_id"] = caine["id"]
+role ["character_name"] = "Alfred"
+role.save
+
+
+role = Role.new
+role ["movie_id"] = dark_night["id"]
+role ["actor_id"] = maggie["id"]
+role ["character_name"] = "Rachel Dawes"
+role.save
+
+#darknightrises
+dark_rises = Movie.find_by({ "title" => "The Dark Knight Rises" })
+hardy = Actor.find_by({ "name" => "Tom Hardy" })
+gordon = Actor.find_by({ "name" => "Joseph Gordon-Levitt" })
+anne = Actor.find_by({ "name" => "Anne Hathaway" })
+
+role = Role.new
+role ["movie_id"] = dark_rises["id"]
+role ["actor_id"] = bale["id"]
+role ["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_rises["id"]
+role ["actor_id"] = oldman["id"]
+role ["character_name"] = "Commissioner Gordon"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_rises["id"]
+role ["actor_id"] = hardy["id"]
+role ["character_name"] = "Bane"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_rises["id"]
+role ["actor_id"] = gordon["id"]
+role ["character_name"] = "John Blake"
+role.save
+
+role = Role.new
+role ["movie_id"] = dark_rises["id"]
+role ["actor_id"] = anne["id"]
+role ["character_name"] = "Selina Kyle"
+role.save
+
+
+
 
 # Prints a header for the movies output
 puts "Movies"
@@ -186,8 +292,7 @@ puts ""
 all_movies = Movie.all
 puts all_movies.inspect
 
-all_roles = Role.all
-puts all_roles.inspect
+
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
@@ -198,6 +303,7 @@ puts "Top Cast"
 puts "========"
 puts ""
 
-
+all_roles = Role.all
+puts all_roles.inspect
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
