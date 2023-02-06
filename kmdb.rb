@@ -290,26 +290,35 @@ puts "======"
 puts ""
 
 
-movie_list = Movie.where({ "studio_id" => warner["id"] })
-
-for movie in movie_list
-movie_title = movie ["title"]
-year_released = movie ["year_released"]
-rated = movie ["rated"]
-studio = movie ["studio_id"]
-puts "#{movie_title} #{year_released} #{rated} #{studio}"
-end 
 
 
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+
+movie_list = Movie.where({ "studio_id" => warner["id"] })
+
+for movie in movie_list
+
+movie_title = movie ["title"]
+year_released = movie ["year_released"]
+rated = movie ["rated"]
+studio = movie ["studio_id"]
+printf("%-25s %-10s %-10s %-10s\n", "#{movie_title}", "#{year_released}", "#{rated}", "#{studio}")
+
+end 
+
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
+
+
+# Query the cast data and loop through the results to display the cast output for each movie.
+# TODO!
+
 
 role_begins = Role.where({ "movie_id" => begins["id"] })
 for role in role_begins
@@ -327,6 +336,7 @@ for role in role_dark
     puts "#{movie_title1} #{movie_actor} #{movie_character}"
 end 
 
+
 role_rises = Role.where({ "movie_id" => dark_rises["id"] })
 for role in role_rises
     movie_title1 = role ["movie_id"]
@@ -334,31 +344,3 @@ for role in role_rises
     movie_character = role ["character_name"]
     puts "#{movie_title1} #{movie_actor} #{movie_character}"
 end
-
-#all_roles = Role.all
-#puts all_roles.inspect
-# Query the cast data and loop through the results to display the cast output for each movie.
-# TODO!
-
-
-
-
-
-###
-#apple_contacts = Contact.where({ "company_id" => apple["id"] })
-#puts apple_contacts.inspect
-
-#puts "Contacts at Apple: #{apple_contacts.count}"
-
-# 3. What is the full name of each contact who works at Apple?
-
-# loop through contacts
-#for contact in apple_contacts
-  # read each contact row's first_name and last_name columns
- # first_name = contact["first_name"]
-  #last_name = contact["last_name"]
-  # display the first_name and last_name
-  #puts "#{first_name} #{last_name}"
-#end
-
-
