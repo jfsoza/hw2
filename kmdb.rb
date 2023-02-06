@@ -296,10 +296,12 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
+warner = Studio.find_by({ "name" => "Warner Bros."})
 
-movie_list = Movie.where({ "studio_id" => warner["id"] })
+warner_movies = Movie.where({ "studio_id" => warner["id"] })
 
-for movie in movie_list
+
+for movie in warner_movies
 
 movie_title = movie ["title"]
 year_released = movie ["year_released"]
