@@ -297,7 +297,7 @@ puts ""
 # TODO!
 
 
-warner_movies = Movie.where({ "studio_id" => warner["id"] })
+warner_movies = Movie.all
 
 for movie in warner_movies
 
